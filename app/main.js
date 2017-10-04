@@ -1,4 +1,3 @@
-let html = require('./html.js');
-let alerts = require('./alert.js');
-document.querySelector('.body').innerHTML = html;
-alerts();
+import alerts from "./alert"
+import html from './html.json'
+new alerts();

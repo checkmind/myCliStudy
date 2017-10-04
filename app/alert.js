@@ -1,3 +1,6 @@
-module.exports = function(){
-	alert(2);
+class fn{
+	constructor (){
+		alert(1);
+	}
 }
+export default fn;

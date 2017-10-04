@@ -7,7 +7,19 @@ module.exports = {
 	},
 	devServer : {
 		contentBase : "./public",
-		historyApiFallback : true, //单页面应用，不跳转
+		historyApiFallback : false, //单页面应用，不跳转
 		inline : true	
+	},
+	module : {
+		rules : [{
+			test: /(\.jsx|\.js)$/,
+			use : {
+				loader : "babel-loader",
+				options : {
+					presets : ['es2015']
+				}
+			},
+			exclude : /node_modules/
+		}]
 	}
 }
