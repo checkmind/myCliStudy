@@ -1,3 +1,4 @@
-import alerts from "./alert"
+import {fn} from "./alert"
 import html from './html.json'
-new alerts();
+import  "./style.css";
+import  "./stylesheet.less"

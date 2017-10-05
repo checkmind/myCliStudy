@@ -1,6 +1,6 @@
-class fn{
-	constructor (){
-		alert(1);
-	}
-}
-export default fn;
+// class fn{
+// 	constructor (){
+// 		alert(1);
+// 	}
+// }
+export var fn = 2;

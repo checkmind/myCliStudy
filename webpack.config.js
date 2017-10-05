@@ -11,15 +11,24 @@ module.exports = {
 		inline : true	
 	},
 	module : {
-		rules : [{
-			test: /(\.jsx|\.js)$/,
+		loaders : [{
+			test: /\.js$/,
 			use : {
-				loader : "babel-loader",
-				options : {
-					presets : ['es2015']
-				}
+				loader : "babel-loader"
 			},
 			exclude : /node_modules/
+		},{
+			test: /(\.less|\.css)$/,
+			use : [{
+				loader : "style-loader"
+			},{
+                loader: "css-loader",
+                options: {
+                   // modules: true
+                }
+            },{
+            	loader : "less-loader"
+            }]
 		}]
 	}
 }
