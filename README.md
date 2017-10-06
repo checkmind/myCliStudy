@@ -1,11 +1,13 @@
-# myCliStudy
-webpack 
+# myCliStudy（完结）
+webpack babel loaders plugins 代码压缩 静态文件打版本号
 ##  记录一些工具从0开始的搭建过程  
 以下项目的提交就是一次完整的搭建。  
 项目提交顺序：  
  - webpack搭建  
  - babel在webpack中配置  
- - less-loader css-loader style-loader安装 
+ - less-loader css-loader style-loader安装  
+ - plugins
+ 
 run dev server  //启动webpack devServer  
 修改文件自动刷新页面  
 ### webpack搭建
@@ -113,8 +115,31 @@ module.exports = {
 		}]
 	}
 }
+```  
+### plugins  
+plugins是webpack的另一大块内容，与loaders不同的是，它提供了工具的接口，这些工具，方便我们对项目工程的  
+自动化操作，比如给静态资源打版本号，防止缓存，或者代码压缩减少代码体积.....具体的工具按照需求不同去应用就可以了。  
+#### 网页模板  HtmlWebpackPlugin  
+安装HtmlWebpackPlugin  
+npm install --save-dev html-webpack-plugin 
+在app文件夹新建模板文件：index.teml.html  
+新建build文件夹，打包后静态页面会输出到这里。  
+这个文件会作为原始文件，经过HtmlWebpackPlugin插件，将自动合并上面的模板文件与静态资源，在过程中对资源进行操作，  
+如打版本号或者压缩代码，具体的配置选项[点这里](https://www.npmjs.com/package/html-webpack-plugin)  
+代码压缩webpack有内置方法，webpack.optimize.UglifyJsPlugin，同样的配置到webpack的配置文件的plugin选项就可以了。  
+运行npm run start  
+#### webpack-production.config.js  
+这个文件的意义就在于，在开发环境下，可能webpack的配置特别多特别繁琐，所以将配置文件分为好几个，方便处理。  
+而在package文件。
 ```
-具体模块代码下载对应的commit就可以了。  
+"scripts": {
+    "start": "webpack",
+    "server": "webpack-dev-server --open",
+    "build": "set NODE_ENV=production &&webpack --config ./webpack.production.config.js --progress"
+  }
+```  
+运行npm run build  
+具体模块代码下载对应的commit就可以了。  
 
 主要参考了以下链接:  
 
